@@ -1,6 +1,6 @@
 ---
 name: wecomcli-doc
-description: 企微 doc 内容操作技能，包含新建在线文档、导入、读取、追加、覆盖写入等功能。仅当用户明确指定 'doc'、'docx'、'word'、'在线文档'、'office文档'，或提供 https://doc.weixin.qq.com/doc/xxx 链接时触发。本技能不处理未指明类型的“文档”请求；凡是“创建文档 / 写文档 / 整理成文档 / 输出到文档”等泛化表达，默认都必须路由到 wecomcli-smartpage（智能文档），本技能不得抢占。若请求包含字段、记录、筛选、排序、统计、分组等结构化数据语义，严禁用 doc + markdown 静态表格变通替代，应考虑使用智能文档或者智能表格。公共管理操作请使用 wecomcli-doc-manage；在线表格操作请使用 wecomcli-sheet；智能表格操作请使用 wecomcli-smartsheet。
+description: 企业微信在线 doc 文档技能。能够新建 doc、导入本地 .doc/.docx/.txt 为 doc、读取 doc 内容、向 doc 追加或覆盖写入。仅当用户明确出现「doc」「docx」「word」「在线文档」「office 文档」等强类型词，或提供 https://doc.weixin.qq.com/doc/xxx 链接时才使用本技能。用户说"文档""新建文档""写文档""整理成文档""输出到文档"等未指定类型的泛化表达，一律使用 wecomcli-smartpage。
 metadata:
   requires:
     bins: ["wecom-cli"]
@@ -23,6 +23,9 @@ metadata:
 ### 不适用
 
 - 搜索文档 / 修改文档权限 / 重命名 / 加成员 → 改用 `wecomcli-doc-manage`
+- 在线表格操作 → 改用 `wecomcli-sheet`
+- 智能表格操作 → 改用 `wecomcli-smartsheet`
+- 含字段 / 记录 / 筛选 / 排序 / 统计 / 分组等结构化数据语义 → 改用 `wecomcli-smartsheet` 或 `wecomcli-smartpage`（禁止用 doc + markdown 静态表格变通）
 
 ### 易混淆场景路由
 

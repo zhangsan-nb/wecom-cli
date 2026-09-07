@@ -1,6 +1,6 @@
 ---
 name: wecomcli-smartpage
-description: 使用 wecom-cli 创建企业微信智能文档，读取页面内容，调整页面树结构，获取内置智能表格信息。适用于用户明确提到企业微信智能文档、智能主页、smartpage，或提供形如 https://doc.weixin.qq.com/smartpage/xxx 或 https://page.weixin.qq.com/smartpage/xxx 的链接。未指定类型的创建/写/整理文档请求默认由本技能承接。
+description: 企业微信智能文档（smartpage）操作技能。能够新建文档、导入 .md 为文档、读取文档内容、修改文档内容（整页重写、局部编辑、增删子页面）、上传附件到文档，以及搭建带看板/图表的数据系统页面和信息收集表单页面。当用户提及文档，智能文档，智能主页、提供 https://doc.weixin.qq.com/smartpage/xxx 或 https://page.weixin.qq.com/smartpage/xxx 链接、要求整理成文档，或表达"新建文档""把 md 导入成文档"等未指定文档类型的需求时，也应使用本技能。
 metadata:
   requires:
     bins: ["wecom-cli"]
