@@ -59,6 +59,10 @@ wecom-cli auth show
 
 🤖 支持的 Skills 使用说明，请参阅 [Skills 文档](docs/skills.md)。
 
+## 数据收集说明
+
+请参阅 [数据收集说明](docs/data-collection.md)。
+
 ## 许可证
 
 本项目基于 [MIT 许可证](./LICENSE) 开源。

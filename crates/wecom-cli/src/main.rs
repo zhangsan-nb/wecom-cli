@@ -6,6 +6,7 @@ mod env;
 mod error;
 mod logging;
 mod telemetry;
+#[cfg(feature = "call-chain")]
 mod trace;
 mod transport;
 
@@ -33,15 +34,19 @@ async fn main() {
 
         let transport = transport::build(&cfg).await?.with_extension(cfg);
 
-        let mut transport = transport;
-        if let Ok(value) =
-            reqwest::header::HeaderValue::from_str(&trace::build_trace_header_value())
-        {
-            transport.headers_mut().insert(
-                reqwest::header::HeaderName::from_static(trace::TRACE_HEADER),
-                value,
-            );
-        }
+        #[cfg(feature = "call-chain")]
+        let transport = {
+            let mut transport = transport;
+            if let Ok(value) =
+                reqwest::header::HeaderValue::from_str(&trace::build_trace_header_value())
+            {
+                transport.headers_mut().insert(
+                    reqwest::header::HeaderName::from_static(trace::TRACE_HEADER),
+                    value,
+                );
+            }
+            transport
+        };
 
         let client = builder
             .transport(transport)
