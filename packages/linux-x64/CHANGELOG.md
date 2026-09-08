@@ -1,5 +1,11 @@
 # @wecom/cli-linux-x64
 
+## 1.2.1
+
+### Patch Changes
+
+- 56cd4c5: 新增编译特性 call-chain
+
 ## 1.2.0
 
 ## 1.1.0
