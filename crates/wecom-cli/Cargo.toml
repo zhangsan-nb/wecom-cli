@@ -44,6 +44,14 @@ tracing-subscriber = { version = "0.3", features = ["env-filter", "json", "local
 wecom = { workspace = true }
 wecom-transport = { workspace = true }
 
+# 进程父链（trace::chain）平台依赖：macOS 用 libc 的 proc_pidinfo，
+# Windows 用 windows-sys 的 Toolhelp32；Linux 读 /proc 无需额外依赖。
+[target.'cfg(target_os = "macos")'.dependencies]
+libc = "0.2"
+
+[target.'cfg(target_os = "windows")'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_Foundation", "Win32_System_Diagnostics_ToolHelp"] }
+
 [dev-dependencies]
 aes-gcm = "0.11"
 assert_cmd = "2"

@@ -6,6 +6,7 @@ mod env;
 mod error;
 mod logging;
 mod telemetry;
+mod trace;
 mod transport;
 
 use error::Error;
@@ -31,6 +32,16 @@ async fn main() {
         let builder = builder.endpoint_catalog(transport::endpoint_catalog());
 
         let transport = transport::build(&cfg).await?.with_extension(cfg);
+
+        let mut transport = transport;
+        if let Ok(value) =
+            reqwest::header::HeaderValue::from_str(&trace::build_trace_header_value())
+        {
+            transport.headers_mut().insert(
+                reqwest::header::HeaderName::from_static(trace::TRACE_HEADER),
+                value,
+            );
+        }
 
         let client = builder
             .transport(transport)

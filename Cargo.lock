@@ -3650,6 +3650,7 @@ dependencies = [
  "image",
  "indexmap 2.14.0",
  "keyring",
+ "libc",
  "mockito",
  "open",
  "predicates",
@@ -3669,6 +3670,7 @@ dependencies = [
  "tracing-subscriber",
  "wecom",
  "wecom-transport",
+ "windows-sys 0.61.2",
  "wiremock",
 ]
 
