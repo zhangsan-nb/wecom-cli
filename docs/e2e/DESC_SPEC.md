@@ -359,9 +359,9 @@ wecom hr department list --id root --dry-run
 
 ## 命令
 
-​```bash
+```bash
 wecom --version
-​```
+```
 
 ## 断言 — CLI
 
@@ -397,9 +397,9 @@ wecom --version
 
 ## 命令
 
-​```bash
+```bash
 wecom hr department list --id root --output <tmp_dir>/out.json
-​```
+```
 
 ## 断言 — CLI
 
@@ -437,18 +437,18 @@ wecom hr department list --id root --output <tmp_dir>/out.json
 
 - mock server 返回 catalog + service detail
 - method call 返回含 `taskid` 的响应：
-  ​```json
+  ```json
   { "result": null, "taskid": "task_001", "long_task_poll": { "done": false, "task_timeout": 60, "polling_interval_ms": 1 } }
-  ​```
+  ```
 - 轮询 endpoint 配置：
   1. 第 1 次返回 `done: false`
   2. 第 2 次返回 `done: true` + 最终 result
 
 ## 命令
 
-​```bash
+```bash
 wecom hr department list --id root
-​```
+```
 
 ## 断言 — CLI
 
@@ -460,9 +460,9 @@ wecom hr department list --id root
 - method call endpoint 被调用 1 次
 - 轮询 endpoint 被调用 2 次
 - 每次轮询 body：
-  ​```json
+  ```json
   { "method": "PollClawLongTask", "payload": "{\"taskid\":\"task_001\"}" }
-  ​```
+  ```
 
 ## 断言 — FS
 
